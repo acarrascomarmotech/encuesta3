@@ -7,7 +7,7 @@ const Home = () => {
   const router = useRouter();
   useEffect(() => {
     const redirect = setTimeout(() => {
-      router.push("http://localhost:3000/orden/205884");
+      router.push("https://encuesta3.vercel.app/orden/205882");
     }, 2000);
 
     return () => clearTimeout(redirect);
