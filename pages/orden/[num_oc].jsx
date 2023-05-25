@@ -8,14 +8,14 @@ export const ordenPage = ({ num_oc, cotizacion_no, cliente }) => {
   return (
     <div className="container">
       <div className="cabezera-cliente">
-        <div className="cabezera-info item">
+        <div className="cabezera-info uno">
           <p className="p-info">
-            Estimado(a) {cliente}: <br />
+            Estimado(a) {cliente}: <br /> <br />
             Por favor responda a la siguiente encuesta corta sobre su
             experiencia con la cotizacion: {cotizacion_no}
           </p>
         </div>
-        <Image className="logo item" src={logo} alt="logo" />
+        <Image className="logo dos" src={logo} alt="logo" />
       </div>
       <div className="footer">
         <p className="">
