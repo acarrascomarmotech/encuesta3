@@ -18,7 +18,7 @@ export const ordenPage = ({ num_oc, cotizacion_no, cliente }) => {
         <Image className="logo dos" src={logo} alt="logo" />
       </div>
       <div className="footer">
-        <p className="">
+        <p>
           Esta encuesta solo le tomará un minuto y en ella no se solicita
           información personal.
         </p>

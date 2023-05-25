@@ -59,6 +59,7 @@ span {
   display: flex;
   flex-direction: column;
   max-width: 95%;
+  margin-top: 2px;
 }
 
 .footer {
@@ -92,10 +93,10 @@ span {
   .footer {
     flex-direction: column;
     width: 85%;
-    gap: 20px;
     align-items: center;
     justify-content: center;
-    margin: 10px;
+    margin: 0px 2px;
+    margin-left: 10px;
   }
 
   .logo {
@@ -106,6 +107,7 @@ span {
 
   .cabezera-cliente {
     display: flex;
+    
   }
 
   .cabezera-cliente > * {
