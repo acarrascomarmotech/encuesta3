@@ -1,17 +1,17 @@
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
-import { useRouter } from "next/router";
-import { useEffect } from "react";
+// import { useRouter } from "next/router";
+// import { useEffect } from "react";
 
 const Home = () => {
-  const router = useRouter();
-  useEffect(() => {
-    const redirect = setTimeout(() => {
-      router.push("https://encuesta3.vercel.app/orden/205882");
-    }, 2000);
+  // const router = useRouter();
+  // useEffect(() => {
+  //   const redirect = setTimeout(() => {
+  //     router.push("https://encuesta3.vercel.app/orden/205882");
+  //   }, 2000);
 
-    return () => clearTimeout(redirect);
-  }, []);
+  //   return () => clearTimeout(redirect);
+  // }, []);
 
   return (
     <div className={styles.container}>

@@ -135,13 +135,14 @@ span {
     justify-content: center;
     margin: 10px;
   }
+
   .footer {
     flex-direction: column;
-    width: 90%;
-    gap: 20px;
+    width: 85%;
     align-items: center;
     justify-content: center;
-    margin: 10px;
+    margin: 0px 2px;
+    margin-left: 10px;
   }
   
 }
