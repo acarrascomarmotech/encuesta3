@@ -48,7 +48,9 @@ export const getStaticProps = async ({ params }) => {
     `{"oper":"orden_cliente","data":"{\\"usuario\\":\\"conecta\\",\\"clave\\":\\"conecta\\",\\"orden\\":\\"${num_oc}\\"}"}`,
     { headers }
   );
-  const { cotizacion_no,cliente } = data.orden_master    
+  const cotizacion_no = String(data.orden_master.cotizacion_no);
+  const cliente = String(data.orden_master.cliente);
+
 
   //const num_oc = "205882"
   return {
@@ -74,7 +76,7 @@ export const getStaticPaths = async (ctx) => {
     { headers }
   );
   const num_oc = data.orden_master.num_oc.toString()
-
+ 
   //console.log('path:',num_oc)
   //const num_oc = "205882"
   return {
