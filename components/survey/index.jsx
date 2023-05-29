@@ -1,21 +1,22 @@
 import React from "react";
 import * as Survey from "survey-react"; // import surveyjs
 import { questions, questions2, questions3 } from "./content"; // these are the survey questions
-import "survey-react/modern.min.css";
+import "survey-core/modern.min.css";
 import axios from "axios";
 
-
 const SurveyComponent = ({ num_oc, cliente, navegador, surveyId }) => {
-
-
   console.log(surveyId);
   // Apply theme
   Survey.StylesManager.applyTheme("modern");
 
 
-
   // Create a modal
-  const survey = (surveyId === "survey1") ? new Survey.Model(questions) : (surveyId === "survey2"? new Survey.Model(questions2): new Survey.Model(questions3));
+  const survey =
+    surveyId === "survey1"
+      ? new Survey.Model(questions)
+      : surveyId === "survey2"
+      ? new Survey.Model(questions2)
+      : new Survey.Model(questions3);
 
   survey.onComplete.add(async (sender, option) => {
     const result = survey.getQuestionByName("satisfaction-numeric").value;

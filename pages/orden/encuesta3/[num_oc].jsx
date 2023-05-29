@@ -1,11 +1,11 @@
 import React from "react";
 import axios from "axios";
 import Image from "next/image";
-import Survey from "../survey";
-import logo from "../../public/Logo.png";
+import Survey from "../../survey";
+import logo from "../../../public/Logo.png";
 
 export const ordenPage = ({ num_oc, cotizacion_no, cliente }) => {
-  let surveyId = "survey1"
+  let surveyId = "survey3";
   return (
     <div className="container">
       <div className="cabezera-cliente">

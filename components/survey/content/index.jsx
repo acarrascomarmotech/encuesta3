@@ -26,6 +26,8 @@ export const questions = {
       ],
     },
   ],
+  completeText: "Enviar",
+  buttonColor: "red",
   completedHtml:
     "<p><h4>Gracias por sus comentarios, su opinión es muy importante para nosotros.</h4></p>",
 };
@@ -57,6 +59,7 @@ export const questions2 = {
       ],
     },
   ],
+  completeText: "Enviar",
   completedHtml:
     "<p><h4>Gracias por sus comentarios, su opinión es muy importante para nosotros.</h4></p>",
 };
@@ -88,6 +91,7 @@ export const questions3 = {
       ],
     },
   ],
+  completeText: "Enviar",
   completedHtml:
     "<p><h4>Gracias por sus comentarios, su opinión es muy importante para nosotros.</h4></p>",
 };

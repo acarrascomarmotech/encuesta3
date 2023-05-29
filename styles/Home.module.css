@@ -125,3 +125,7 @@
     filter: invert(1);
   }
 }
+
+.sv-btn.sv-footer__next-btn.my-button {
+  background-color: magenta;
+}
