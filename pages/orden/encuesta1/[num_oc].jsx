@@ -13,7 +13,7 @@ export const ordenPage = ({ num_oc, cotizacion_no, cliente }) => {
           <p className="p-info">
             Estimado(a) {cliente}: <br /> <br />
             Por favor responda a la siguiente encuesta corta sobre su
-            experiencia con la cotizacion: {cotizacion_no} <br /><br />
+            experiencia con la cotización: {cotizacion_no} <br /><br />
             Esta encuesta solo le tomará un minuto y en ella no se solicita
             información personal.
           </p>
