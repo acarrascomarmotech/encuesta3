@@ -5,6 +5,7 @@ import Survey from "../survey";
 import logo from "../../public/Logo.png";
 
 export const ordenPage = ({ num_oc, cotizacion_no, cliente }) => {
+  let surveyId = "survey1"
   return (
     <div className="container">
       <div className="cabezera-cliente">
@@ -23,7 +24,12 @@ export const ordenPage = ({ num_oc, cotizacion_no, cliente }) => {
           información personal.
         </p>
       </div>
-      <Survey num_oc={num_oc} cotizacion_no={cotizacion_no} cliente={cliente} />
+      <Survey
+        num_oc={num_oc}
+        cotizacion_no={cotizacion_no}
+        cliente={cliente}
+        surveyId={surveyId}
+      />
     </div>
   );
 };
@@ -51,7 +57,6 @@ export const getStaticProps = async ({ params }) => {
   const cotizacion_no = String(data.orden_master.cotizacion_no);
   const cliente = String(data.orden_master.cliente);
 
-
   //const num_oc = "205882"
   return {
     props: {
@@ -75,8 +80,8 @@ export const getStaticPaths = async (ctx) => {
     `{"oper":"orden_cliente","data":"{\\"usuario\\":\\"conecta\\",\\"clave\\":\\"conecta\\",\\"orden\\":\\"205882\\"}"}`,
     { headers }
   );
-  const num_oc = data.orden_master.num_oc.toString()
- 
+  const num_oc = data.orden_master.num_oc.toString();
+
   //console.log('path:',num_oc)
   //const num_oc = "205882"
   return {

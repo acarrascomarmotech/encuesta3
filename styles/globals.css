@@ -13,6 +13,7 @@ a {
 
 * {
   box-sizing: border-box;
+  margin-bottom: 0px;
 }
 
 span {
@@ -28,7 +29,7 @@ span {
 
 .logo {
   max-width: 350px;
-  height: 130px;
+  height: 150px;
   margin-top: 40px;
 }
 
@@ -37,7 +38,7 @@ span {
   flex-wrap: wrap;
   gap: 50px;
   justify-content: space-around;
-  margin-top: -60px;
+  margin-top: -70px;
 }
 
 .cabezera-info {
@@ -58,8 +59,9 @@ span {
 .container {
   display: flex;
   flex-direction: column;
-  max-width: 95%;
-  margin-top: 2px;
+  max-width: 94%;
+  margin-top: 20px
+
 }
 
 .footer {
@@ -70,7 +72,7 @@ span {
   color: rgb(127 29 29);
   font-size: 16px;
   font-weight: 700;
-  margin-top: 40px;
+  margin-top: -10px;
 }
 
 .form-btn {

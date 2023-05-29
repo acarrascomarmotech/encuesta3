@@ -4,7 +4,7 @@ const SurveyComponent = dynamic(() => import("../components/survey"), {
   ssr: false,
 });
 
-const Survey = ({ num_oc, cotizacion_no, cliente }) => {
+const Survey = ({ num_oc, cliente, surveyId }) => {
   const [navegador, setNavegador] = useState("");
 
   useEffect(() => {
@@ -26,7 +26,6 @@ const Survey = ({ num_oc, cotizacion_no, cliente }) => {
     setNavegador("" + sBrowser);
   }, []);
 
-  console.log(navegador);
 
   return (
     <div>
@@ -34,6 +33,7 @@ const Survey = ({ num_oc, cotizacion_no, cliente }) => {
         num_oc={num_oc}
         cliente={cliente}
         navegador={navegador}
+        surveyId={surveyId}
       />
     </div>
   );
