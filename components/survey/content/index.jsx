@@ -18,7 +18,7 @@ export const questions = {
         {
           name: "comment",
           type: "text",
-          title: "Comentario",
+          title: "RAZON DE LA PUNTUACIÓN",
           inputType: "comment",
           placeholder: "Escriba su comentario",
           isRequired: false,
@@ -42,7 +42,8 @@ export const questions2 = {
         {
           type: "rating",
           name: "satisfaction-numeric",
-          title: "¿SE SIENTE SATISFECHO CON LA INSTALACION?",
+          title:
+            " ¿SE SIENTE SATISFECHO CON LA INSTALACION LLEVADA A CABO POR NUESTROS TECNICOS?     ",
           rateMin: 0,
           rateMax: 10,
           minRateDescription: "NADA SATISFECHO",
@@ -51,7 +52,7 @@ export const questions2 = {
         {
           name: "comment",
           type: "text",
-          title: "Comentario",
+          title: "RAZON DE LA PUNTUACIÓN",
           inputType: "comment",
           placeholder: "Escriba su comentario",
           isRequired: false,
@@ -74,7 +75,7 @@ export const questions3 = {
         {
           type: "rating",
           name: "satisfaction-numeric",
-          title: "¿SE SIENTE SATISFECHO CON LA COMUNICACION?",
+          title: "¿SE SIENTE SATISFECHO CON LA COMUNICACIÓN CON EL PERSONAL DE MARMOTECH",
           rateMin: 0,
           rateMax: 10,
           minRateDescription: "NADA SATISFECHO",
@@ -83,7 +84,7 @@ export const questions3 = {
         {
           name: "comment",
           type: "text",
-          title: "Comentario",
+          title: "RAZON DE LA PUNTUACIÓN",
           inputType: "comment",
           placeholder: "Escriba su comentario",
           isRequired: false,

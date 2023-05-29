@@ -13,17 +13,15 @@ export const ordenPage = ({ num_oc, cotizacion_no, cliente }) => {
           <p className="p-info">
             Estimado(a) {cliente}: <br /> <br />
             Por favor responda a la siguiente encuesta corta sobre su
-            experiencia con la cotizacion: {cotizacion_no}
+            experiencia con la cotizacion: {cotizacion_no} <br />
+            <br />
+            Esta encuesta solo le tomará un minuto y en ella no se solicita
+            información personal.
           </p>
         </div>
         <Image className="logo dos" src={logo} alt="logo" />
       </div>
-      <div className="footer">
-        <p>
-          Esta encuesta solo le tomará un minuto y en ella no se solicita
-          información personal.
-        </p>
-      </div>
+      <div className="footer"></div>
       <Survey
         num_oc={num_oc}
         cotizacion_no={cotizacion_no}
