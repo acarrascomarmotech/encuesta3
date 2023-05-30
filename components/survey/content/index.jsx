@@ -75,7 +75,7 @@ export const questions3 = {
         {
           type: "rating",
           name: "satisfaction-numeric",
-          title: "¿SE SIENTE SATISFECHO CON LA COMUNICACIÓN CON EL PERSONAL DE MARMOTECH",
+          title: "¿SE SIENTE SATISFECHO CON LA COMUNICACIÓN ESTABLECIDA CON EL PERSONAL DE MARMOTECH?",
           rateMin: 0,
           rateMax: 10,
           minRateDescription: "NADA SATISFECHO",
