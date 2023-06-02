@@ -5,7 +5,6 @@ import "survey-core/modern.min.css";
 import axios from "axios";
 
 const SurveyComponent = ({ num_oc, cliente, navegador, surveyId }) => {
-  console.log(surveyId);
   // Apply theme
   Survey.StylesManager.applyTheme("modern");
 
