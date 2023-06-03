@@ -5,41 +5,41 @@ import "survey-core/modern.min.css";
 import axios from "axios";
 
 const SurveyComponent = ({ num_oc, cliente, navegador, surveyId }) => {
-  // Apply theme
-  Survey.StylesManager.applyTheme("modern");
+    // Apply theme
+    Survey.StylesManager.applyTheme("modern");
 
 
-  // Create a modal
-  const survey =
-    surveyId === "survey1"
-      ? new Survey.Model(questions)
-      : surveyId === "survey2"
-      ? new Survey.Model(questions2)
-      : new Survey.Model(questions3);
+    // Create a modal
+    const survey =
+        surveyId === "survey1"
+            ? new Survey.Model(questions)
+            : surveyId === "survey2"
+                ? new Survey.Model(questions2)
+                : new Survey.Model(questions3);
 
-  survey.onComplete.add(async (sender, option) => {
-    const result = survey.getQuestionByName("satisfaction-numeric").value;
-    const result2 = survey.getQuestionByName("comment").value;
-    console.log(result2);
+    survey.onComplete.add(async (sender, option) => {
+        const result = survey.getQuestionByName("satisfaction-numeric").value;
+        const result2 = survey.getQuestionByName("comment").value;
+        console.log(result2);
 
-    const headers = {
-      "Content-Type": "dbsync/json*",
-      "DBSync-Client": "mbs",
-    };
+        const headers = {
+            "Content-Type": "dbsync/json*",
+            "DBSync-Client": "mbs",
+        };
 
-    const { data } = await axios.post(
-      "https://ws.marmotech.com.do/gas/ws/r/restserver",
-      `{"oper":"respuesta_clientes","data":"{\\"usuario\\":\\"conecta\\",\\"clave\\":\\"conecta\\",\\"cotizacion\\":\\"${num_oc}\\",\\"cliente\\":\\"${cliente}\\",\\"respuesta\\":\\"${result}\\",\\"dispositivo\\":\\"${navegador}\\",\\"comentario\\":\\"${result2}\\"}"}`,
-      { headers }
+        const { data } = await axios.post(
+            "https://ws.marmotech.com.do/gas/ws/r/restserver",
+            `{"oper":"respuesta_clientes","data":"{\\"usuario\\":\\"conecta\\",\\"clave\\":\\"conecta\\",\\"cotizacion\\":\\"${num_oc}\\",\\"cliente\\":\\"${cliente}\\",\\"respuesta\\":\\"${result}\\",\\"dispositivo\\":\\"${navegador}\\",\\"comentario\\":\\"${result2}\\"}"}`,
+            { headers }
+        );
+    });
+
+    // Render the survey
+    return (
+        <div className="container">
+            <Survey.Survey model={survey} />
+        </div>
     );
-  });
-
-  // Render the survey
-  return (
-    <div className="container">
-      <Survey.Survey model={survey} />
-    </div>
-  );
 };
 
 export default SurveyComponent;
