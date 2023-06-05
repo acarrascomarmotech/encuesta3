@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import axios from "axios";
 import Image from "next/image";
 import Survey from "../../survey";
@@ -10,22 +10,7 @@ import {
 
 export const ordenPage = ({ num_oc_decrypted, cotizacion_no, cliente }) => {
 	let surveyId = "survey1";
-	const [datos, setdatos] = useState("");
-	useEffect(() => {
-		setdatos(num_oc_decrypted);
-	}, [num_oc_decrypted]);
 
-	console.log(`datos: ${datos}`);
-
-	useEffect(() => {
-		fetch("/encuesta3.vercel.app/api/encrypt", {
-			method: "POST",
-			body: JSON.stringify(datos),
-			headers: {
-				"Content-Type": "application/json",
-			},
-		});
-	}, []);
 	return (
 		<div className="container">
 			<div className="cabezera-cliente">
@@ -93,14 +78,15 @@ export const getStaticPaths = async (ctx) => {
 
 	const { data } = await axios.post(
 		"https://ws.marmotech.com.do/gas/ws/r/restserver",
-		`{"oper":"orden_cliente","data":"{\\"usuario\\":\\"conecta\\",\\"clave\\":\\"conecta\\",\\"orden\\":\\"205860\\"}"}`,
+		`{"oper":"orden_cliente","data":"{\\"usuario\\":\\"conecta\\",\\"clave\\":\\"conecta\\",\\"orden\\":\\"205849\\"}"}`,
 		{ headers }
 	);
 
 	const cliente = data.orden_master.cotizacion_no.toString();
 	const num_oc = encriptarParametro(cliente);
-	console.log(cliente);
-	console.log(num_oc);
+
+	console.log(`path ${num_oc}`);
+	console.log(`path ${cliente}`);
 
 	return {
 		paths: [{ params: { num_oc } }],
