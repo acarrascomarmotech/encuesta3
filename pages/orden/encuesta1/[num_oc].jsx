@@ -18,7 +18,7 @@ export const ordenPage = ({ num_oc_decrypted, cotizacion_no, cliente }) => {
 	console.log(`datos: ${datos}`);
 
 	useEffect(() => {
-		fetch("https://encuesta3.vercel.app/api/encrypt", {
+		fetch("/encuesta3.vercel.app/api/encrypt", {
 			method: "POST",
 			body: JSON.stringify(datos),
 			headers: {
