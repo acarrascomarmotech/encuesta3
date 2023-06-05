@@ -3,110 +3,109 @@ import axios from "axios";
 import Image from "next/image";
 import Survey from "../../survey";
 import logo from "../../../public/Logo.png";
-import { encryptId, decryptId, getUrl } from "../../../utils/encrypt";
+import {
+	desencriptarParametro,
+	encriptarParametro,
+} from "../../../utils/webtoken";
 
 export const ordenPage = ({ num_oc_decrypted, cotizacion_no, cliente }) => {
-  let surveyId = "survey1";
-  
+	let surveyId = "survey1";
+	const [datos, setdatos] = useState("");
+	useEffect(() => {
+		setdatos(num_oc_decrypted);
+	}, [num_oc_decrypted]);
 
-  useEffect(() => {
+	console.log(`datos: ${datos}`);
 
-    fetch("http://localhost:3000/api/encrypt", {
-      method: "POST",
-      body: JSON.stringify(num_oc_decrypted),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-  }, []);
-
-  return (
-    <div className="container">
-      <div className="cabezera-cliente">
-        <div className="cabezera-info uno">
-          <p className="p-info">
-            Estimado(a) {cliente}: <br /> <br />
-            Por favor responda a la siguiente encuesta corta sobre su
-            experiencia con la cotización: {num_oc_decrypted} <br />
-            <br />
-            Esta encuesta solo le tomará un minuto y en ella no se solicita
-            información personal.
-          </p>
-        </div>
-        <Image className="logo dos" src={logo} alt="logo" />
-      </div>
-      <div className="footer"></div>
-      <Survey
-        num_oc={num_oc_decrypted}
-        cotizacion_no={cotizacion_no}
-        cliente={cliente}
-        surveyId={surveyId}
-      />
-    </div>
-  );
+	useEffect(() => {
+		fetch("http://localhost:3000/api/encrypt", {
+			method: "POST",
+			body: JSON.stringify(datos),
+			headers: {
+				"Content-Type": "application/json",
+			},
+		});
+	}, []);
+	return (
+		<div className="container">
+			<div className="cabezera-cliente">
+				<div className="cabezera-info uno">
+					<p className="p-info">
+						Estimado(a) {cliente}: <br /> <br />
+						Por favor responda a la siguiente encuesta corta sobre
+						su experiencia con la cotización: {
+							num_oc_decrypted
+						}{" "}
+						<br />
+						<br />
+						Esta encuesta solo le tomará un minuto y en ella no se
+						solicita información personal.
+					</p>
+				</div>
+				<Image className="logo dos" src={logo} alt="logo" />
+			</div>
+			<div className="footer"></div>
+			<Survey
+				num_oc={num_oc_decrypted}
+				cotizacion_no={cotizacion_no}
+				cliente={cliente}
+				surveyId={surveyId}
+			/>
+		</div>
+	);
 };
 
 export const getStaticProps = async ({ params }) => {
-  const { num_oc } = params;
-  const num_oc_decrypted = decryptId(num_oc);
-  // console.log(num_oc_decrypted);
+	const { num_oc } = params;
+	const num_oc_decryptedo = desencriptarParametro(num_oc);
+	const num_oc_decrypted = num_oc_decryptedo["parametro"];
 
-  // console.log(typeof num_oc);
+	const headers = {
+		"Content-Type": "dbsync/json*",
+		"DBSync-Client": "mbs",
+	};
 
-  const headers = {
-    "Content-Type": "dbsync/json*",
-    "DBSync-Client": "mbs",
-  };
+	//const { data } = await axios.post<Orden>('https://ws.marmotech.com.do/gas/ws/r/restserver',
 
-  const { data } = await axios.post(
-    "https://ws.marmotech.com.do/gas/ws/r/restserver",
-    `{"oper":"orden_cliente","data":"{\\"usuario\\":\\"conecta\\",\\"clave\\":\\"conecta\\",\\"orden\\":\\"${num_oc_decrypted}\\"}"}`,
-    { headers }
-  );
-  const cotizacion_no = String(data.orden_master.cotizacion_no);
-  const cliente = String(data.orden_master.cliente);
+	const { data } = await axios.post(
+		"https://ws.marmotech.com.do/gas/ws/r/restserver",
+		`{"oper":"orden_cliente","data":"{\\"usuario\\":\\"conecta\\",\\"clave\\":\\"conecta\\",\\"orden\\":\\"${num_oc_decrypted}\\"}"}`,
+		{ headers }
+	);
+	const cotizacion_no = String(data.orden_master.cotizacion_no);
+	const cliente = String(data.orden_master.cliente);
 
-  return {
-    props: {
-      num_oc_decrypted,
-      cotizacion_no,
-      cliente,
-    },
-  };
+	return {
+		props: {
+			num_oc_decrypted,
+			num_oc,
+			cotizacion_no,
+			cliente,
+		},
+	};
 };
 
 export const getStaticPaths = async (ctx) => {
-    const headers = {
-        "Content-Type": "dbsync/json*",
-        "DBSync-Client": "mbs",
-    };
+	const headers = {
+		"Content-Type": "dbsync/json*",
+		"DBSync-Client": "mbs",
+	};
 
-  const { data } = await axios.post(
-    "https://ws.marmotech.com.do/gas/ws/r/restserver",
-    `{"oper":"orden_cliente","data":"{\\"usuario\\":\\"conecta\\",\\"clave\\":\\"conecta\\",\\"orden\\":\\"205883\\"}"}`,
-    { headers }
-  );
+	const { data } = await axios.post(
+		"https://ws.marmotech.com.do/gas/ws/r/restserver",
+		`{"oper":"orden_cliente","data":"{\\"usuario\\":\\"conecta\\",\\"clave\\":\\"conecta\\",\\"orden\\":\\"205860\\"}"}`,
+		{ headers }
+	);
 
-  // console.log(data);
-  const cliente = data.orden_master.cotizacion_no.toString();
-  // console.log(cliente);
-  const num_oc = encryptId(cliente);
-  const desencriptado = decryptId(num_oc);
-  // console.log("Encriptado en el path");
-  // console.log(num_oc);
-  // console.log("Desencriptado en el path");
-  // console.log(desencriptado);
+	const cliente = data.orden_master.cotizacion_no.toString();
+	const num_oc = encriptarParametro(cliente);
+	console.log(cliente);
+	console.log(num_oc);
 
-  return {
-    paths: [
-      {
-        params: {
-          num_oc,
-        },
-      },
-    ],
-    fallback: "blocking",
-  };
+	return {
+		paths: [{ params: { num_oc } }],
+		fallback: "blocking",
+	};
 };
 
 export default ordenPage;

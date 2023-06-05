@@ -6,12 +6,10 @@ export function encriptarParametro(parametro) {
   return token;
 }
 
-export function desencriptarParametro(parametro) {
+export function desencriptarParametro(tokenEncriptado) {
   try {
-    const decoded = jwt.verify(parametro, secretKey);
-
-    // Retorna los datos desencriptados
-    return decoded;
+    const parametro = jwt.verify(tokenEncriptado, secretKey);
+    return parametro;
   } catch (error) {
     // Manejo de errores si el JWT no es válido
     console.error('Error al desencriptar el parámetro:', error);
