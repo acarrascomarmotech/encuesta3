@@ -50,7 +50,6 @@ export const getStaticProps = async ({ params }) => {
 		"DBSync-Client": "mbs",
 	};
 
-	//const { data } = await axios.post<Orden>('https://ws.marmotech.com.do/gas/ws/r/restserver',
 
 	const { data } = await axios.post(
 		"https://ws.marmotech.com.do/gas/ws/r/restserver",
